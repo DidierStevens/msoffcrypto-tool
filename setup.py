@@ -2,8 +2,10 @@ from setuptools import setup
 
 setup(
     name='msoffcrypto-tool',
-    version='2.1.0',
-    description='A Python tool and library for decrypting MS Office files with passwords and other secrets',
+    version='4.1.3',
+    description='A Python tool and library for decrypting MS Office files with passwords or other secrets',
+    long_description=open("README.md", "r").read(),
+    long_description_content_type='text/markdown',
     url='https://github.com/nolze/msoffcrypto-tool',
     author='nolze',
     author_email='nolze@archlinux.us',
@@ -11,16 +13,22 @@ setup(
     keywords='',
     packages=[
         "msoffcrypto",
+        "msoffcrypto.format",
+        "msoffcrypto.method",
     ],
     install_requires=[
         'olefile >= 0.44',
         'cryptography >= 2.0.0',
     ],
+    test_require=[
+        'nose >= 1.3.7',
+        'coverage >= 4.5.1', 
+    ],
     classifiers=[
     ],
     entry_points={
         'console_scripts': [
-            'msoffcrypto-tool = msoffcrypto.msoffcrypto:main',
+            'msoffcrypto-tool = msoffcrypto.__main__:main',
         ],
     },
 )
